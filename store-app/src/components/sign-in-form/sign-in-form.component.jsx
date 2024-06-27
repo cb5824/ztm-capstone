@@ -18,8 +18,7 @@ const SignInForm = () => {
     }
 
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        await signInWithGooglePopup();
     }
 
 
@@ -27,7 +26,8 @@ const SignInForm = () => {
         event.preventDefault();
 
         try {
-            const response = await signInAuthWithEmailAndPassword(email, password)
+            await signInAuthWithEmailAndPassword(email, password);
+            resetFormFields();
         }
         catch (error) {
             console.log(error)
@@ -35,6 +35,7 @@ const SignInForm = () => {
                 case 'auth/invalid-credential':
                     alert('Incorrect password or email')
                     break;
+                default:;
             }
         }
     };
