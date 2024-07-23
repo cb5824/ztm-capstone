@@ -8,7 +8,6 @@ const ProductCard = ({product}) => {
     const { name, price, imageUrl} = product;
     const { addItemToCart} = useContext(CartDrawerContext);
     const addProductToCart = () => addItemToCart(product)
-//  cart items state is not updating? calling console.log with cartItems here shows blank array
     return(
     <div className="product-card-container">
         <img src={imageUrl} alt={`${name}`}/>

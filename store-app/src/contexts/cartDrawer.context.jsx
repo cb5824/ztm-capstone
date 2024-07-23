@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-const addCartItem = (cartItems, productToAdd) => {
+export const addCartItem = (cartItems, productToAdd) => {
     const target = cartItems.find(
         (item) => item.id === productToAdd.id
     );
@@ -12,28 +12,25 @@ const addCartItem = (cartItems, productToAdd) => {
             : cartItem
         );
     }
-        return [...cartItems, { ...productToAdd, quantity: 1 }]
+        return [...cartItems, { ...productToAdd, quantity: 1 }];
     };
 
 export const CartDrawerContext = createContext({
     isOpen: false,
     setIsOpen: () => {},
     cartItems: [],
-    addItemToCart: () => {}
+    addItemToCart: () => {},
 });
 
 export const CartDrawerProvider = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
 
-    const addItemToCart = (productToAdd) => {
-        setCartItems(addCartItem(cartItems, productToAdd));
-    }
+    const addItemToCart = (product) =>
+        setCartItems(addCartItem(cartItems, product));
+        console.log(cartItems)
+    const value = { isOpen, setIsOpen, cartItems, addItemToCart };
 
-    const value = { isOpen, setIsOpen, addItemToCart, cartItems };
-
-    return (
-        <CartDrawerContext.Provider value={value}>{children}</CartDrawerContext.Provider>
-    )
+    return <CartDrawerContext.Provider value={value}>{children}</CartDrawerContext.Provider>
 }
 
