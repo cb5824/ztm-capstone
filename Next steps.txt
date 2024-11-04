@@ -1,7 +1,5 @@
-Build the go tocheckout button
-takes you to checkout page
-in checkout page
-    show list of items in cart
-    increment/decrement buttons
-    x to fully remove line item from cart
-    List updated total price at the bottom
+Routing!
+
+shop
+show only the first 4 of each category
+clicking category title shows full list in that category

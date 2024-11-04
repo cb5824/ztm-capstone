@@ -1,15 +1,15 @@
-import "./checkout-item.styles.scss"
+import { CheckoutItemContainer, ImageContainer, Name, Quantity, Price, RemoveButton } from "./checkout-item.styles";
 
 const CheckoutItem = ({ cartItem, clearFromCart, increment, decrement }) => {
     const { name, imageUrl, price, quantity } = cartItem;
 
     return (
-        <div className="checkout-item-container">
-            <div className="image-container">
+        <CheckoutItemContainer>
+            <ImageContainer>
                 <img src={imageUrl} alt={`${{ name }}`} />
-            </div>
-            <span className="name">{name}</span>
-            <span className="quantity">
+            </ImageContainer>
+            <Name>{name}</Name>
+            <Quantity>
                 <div className="arrow" onClick={decrement}>
                     &#10094;
                 </div>
@@ -17,10 +17,10 @@ const CheckoutItem = ({ cartItem, clearFromCart, increment, decrement }) => {
                 <div className="arrow" onClick={increment}>
                     &#10095;
                 </div>
-            </span>
-            <span className="price">{price}</span>
-            <div className="remove-button" onClick={clearFromCart}>&#10005;</div>
-        </div>
+            </Quantity>
+            <Price>{price}</Price>
+            <RemoveButton onClick={clearFromCart}>&#10005;</RemoveButton>
+        </CheckoutItemContainer>
     )
 }
 
